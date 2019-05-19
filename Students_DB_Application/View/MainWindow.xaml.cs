@@ -9,7 +9,7 @@ namespace Students_DB_Application
         {
             InitializeComponent();
             //Контекст данных окна
-            this.DataContext = new InteractionBDViewModel();
+            this.DataContext = new InteractionDBViewModel();
         }
 
        

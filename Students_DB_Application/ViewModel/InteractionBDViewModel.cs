@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace Students_DB_Application
 { 
-    public class InteractionBDViewModel : INotifyPropertyChanged
+    public class InteractionDBViewModel : INotifyPropertyChanged
     {
         DBContext db;
         DBCommand addCommand;
@@ -24,7 +24,7 @@ namespace Students_DB_Application
             }
         }
         // Загружаем данные из бд в локальный кэш
-        public InteractionBDViewModel()
+        public InteractionDBViewModel()
         {
             db = new DBContext();
             db.Students.Load();
