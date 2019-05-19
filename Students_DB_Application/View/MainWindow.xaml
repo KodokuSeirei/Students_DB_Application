@@ -1,0 +1,37 @@
+﻿<Window x:Class="Students_DB_Application.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+        mc:Ignorable="d"
+        Title="Список студентов" Height="450" Width="800">
+    <Grid>
+        <!-- Объявление строк -->
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <!-- Вывод данных из БД на главное окно --> 
+        <ListBox x:Name="studentList" ItemsSource="{Binding Students}" RenderTransformOrigin="0.523,0.501" Grid.RowSpan="2" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding ID, StringFormat=ID: {0}}" FontSize="12" />
+                        <TextBlock Text="{Binding ФИО}" FontSize="12" />
+                        <TextBlock Text="{Binding Специальность, StringFormat=Специальность: {0}}" FontSize="12" />
+                        <TextBlock Text="{Binding Группа, StringFormat=Группа: {0}}" FontSize="12" />
+                        <TextBlock Text="{Binding Средний_Балл, StringFormat=Средний балл: {0}}" FontSize="12" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <!-- Объявление кнопок --> 
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,20,0">
+            <Button Content="Добавить" Margin="10" Width="60" Command="{Binding AddCommand}"  />
+            <Button Content="Изменить" Margin="10" Width="60" Command="{Binding EditCommand}"
+                    CommandParameter="{Binding ElementName=studentList, Path=SelectedItem}"  />
+            <Button Content="Удалить" Margin="10" Width="60" Command="{Binding DeleteCommand}"
+                    CommandParameter="{Binding ElementName=studentList, Path=SelectedItem}"  />
+        </StackPanel>
+    </Grid>
+</Window>
